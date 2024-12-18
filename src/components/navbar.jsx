@@ -1,18 +1,39 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { useLocation, Link } from 'react-router-dom';
 
+function Navbar() {
+  const location = useLocation();
 
-function navbar() {
+  if (location.pathname === '/chat') {
+    return null;
+  }
+
   return (
-    <div className='bg-red-500 flex justify-center'>
-        <ul className='flex space-x-4'>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/about">About</Link></li>
-            <li><Link to="/chat">Chat With Doctor</Link></li>
-            <li><Link to="/record">Track Your Record</Link></li>
-        </ul>
-    </div>
-  )
+    <nav className="bg-gradient-to-r from-black via-purple-500 to-blue-500 text-white flex justify-center py-4"> 
+      <ul className="flex space-x-4">
+        <li 
+          className={`hover:bg-purple-700 hover:text-white rounded-md p-2 transition-colors duration-300 ${location.pathname === '/' ? 'bg-purple-700 text-white rounded-md p-2' : ''}`}
+        >
+          <Link to="/">Home</Link>
+        </li>
+        <li 
+          className={`hover:bg-purple-700 hover:text-white rounded-md p-2 transition-colors duration-300 ${location.pathname === '/about' ? 'bg-purple-700 text-white rounded-md p-2' : ''}`}
+        >
+          <Link to="/about">About</Link>
+        </li>
+        <li 
+          className={`hover:bg-purple-700 hover:text-white rounded-md p-2 transition-colors duration-300 ${location.pathname === '/chat' ? 'bg-purple-700 text-white rounded-md p-2' : ''}`}
+        >
+          <Link to="/chat">Chat With Doctor</Link>
+        </li>
+        <li 
+          className={`hover:bg-purple-700 hover:text-white rounded-md p-2 transition-colors duration-300 ${location.pathname === '/record' ? 'bg-purple-700 text-white rounded-md p-2' : ''}`}
+        >
+          <Link to="/record">Track Your Record</Link>
+        </li>
+      </ul>
+    </nav>
+  );
 }
 
-export default navbar
+export default Navbar;
