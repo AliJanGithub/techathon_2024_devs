@@ -10,6 +10,7 @@ const sleepRoutes = require("./routes/sleep.routes");
 const medicalRoutes = require("./routes/medical.routes");
 
 const app = express();
+const apiKey = "AIzaSyB1fNLj8Zr1K75_Xbr-Z1OqwN62PA92sj4";
 const port = process.env.PORT || 5000;
 
 // Middleware
