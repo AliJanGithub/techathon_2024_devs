@@ -18,7 +18,7 @@ const addPhysicalData = async (req, res) => {
       - Physical Activity: ${physicalActivity}
       - Exercise Type: ${exerciseType}
       - Calories Consumed: ${caloriesConsumed}.
-    Provide personalized insights and suggestions.`;
+    Provide personalized insights and suggestions.please kepp it consice and the response should not exceed 10 lines`;
 
     // Generate insights using Gemini
     const insights = await geminiService.generateInsights(prompt);

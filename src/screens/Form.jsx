@@ -35,10 +35,12 @@ const Form = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/analyzeHealth",
+        "http://localhost:3000/api/health/analyze",
         formData
       );
-      setResponseMessage(response.data.insights || "Form submitted successfully!");
+      setResponseMessage(
+        response.data.insights || "Form submitted successfully!"
+      );
       setModalVisible(true); // Show the modal
       // Reset form state after successful submission
       setFormData({
@@ -62,7 +64,8 @@ const Form = () => {
       });
     } catch (error) {
       setResponseMessage(
-        error.response?.data?.message || "Error submitting data. Please try again."
+        error.response?.data?.message ||
+          "Error submitting data. Please try again."
       );
       setModalVisible(true); // Show the modal for error
     }
@@ -97,9 +100,17 @@ const Form = () => {
               type: "select",
               options: ["Low", "Medium", "High"],
             },
-            { id: "physicalActivity", label: "Physical Activity", type: "text" },
+            {
+              id: "physicalActivity",
+              label: "Physical Activity",
+              type: "text",
+            },
             { id: "exerciseType", label: "Exercise Type", type: "text" },
-            { id: "caloriesConsumed", label: "Calories Consumed", type: "number" },
+            {
+              id: "caloriesConsumed",
+              label: "Calories Consumed",
+              type: "number",
+            },
             { id: "waterIntake", label: "Water Intake (ml)", type: "number" },
             { id: "meals", label: "Meals", type: "number" },
             { id: "weight", label: "Weight (kg)", type: "number" },
@@ -160,23 +171,23 @@ const Form = () => {
 
       {/* Modal */}
       {modalVisible && (
-  <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-    <div className="bg-white max-h-screen w-full sm:w-11/12 md:w-4/5 lg:w-2/3 p-6 rounded-lg shadow-lg overflow-y-auto">
-      <h3 className="text-xl font-bold mb-4">Response</h3>
-      <pre className="mb-4 whitespace-pre-wrap text-sm text-gray-800">
-        {responseMessage}
-      </pre>
-      <div className="text-right">
-        <button
-          onClick={closeModal}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        >
-          Close
-        </button>
-      </div>
-    </div>
-  </div>
-)}
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="bg-white max-h-screen w-full sm:w-11/12 md:w-4/5 lg:w-2/3 p-6 rounded-lg shadow-lg overflow-y-auto">
+            <h3 className="text-xl font-bold mb-4">Response</h3>
+            <pre className="mb-4 whitespace-pre-wrap text-sm text-gray-800">
+              {responseMessage}
+            </pre>
+            <div className="text-right">
+              <button
+                onClick={closeModal}
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
